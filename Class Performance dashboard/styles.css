@@ -1,0 +1,240 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #2a80b9;
+}
+
+header {
+    background: #2a80b9;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#overview {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+#overview h2 {
+    color: #333;
+    border-bottom: 2px solid #2a80b9;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+#overview p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+#overview ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#overview li {
+    flex-basis: 48%;
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+#overview li span {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #2a80b9;
+    margin-top: 5px;
+}
+
+div {
+    padding: 20px;
+    margin: 10px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+table th, table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #2a80b9;
+    color: white;
+    text-align: left;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+table td {
+    vertical-align: top;
+}
+
+table td:nth-child(1) {
+    font-weight: bold;
+}
+
+.chart {
+    margin-top: 20px;
+    display: inline-block;
+    width: 35%;
+    max-width: 400px;
+    vertical-align: top;
+    padding: 10px;
+}
+
+.chart h2 {
+    margin-top: 0;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #2a80b9;
+    color: #fff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.predict {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.predict h2 {
+    color: #333;
+    border-bottom: 2px solid #2a80b9;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.prediction-form {
+    margin-bottom: 20px;
+}
+
+.prediction-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.prediction-form select, .prediction-form button {
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.prediction-form button {
+    background-color: #2a80b9;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.prediction-form button:hover {
+    background-color: #1c638f;
+}
+
+.prediction-result {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+#feedback > div {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#feedback h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#feedback span {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#feedback select,
+#feedback textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#feedback textarea {
+    height: 100px;   
+    resize: none;
+    padding: 0;
+}
+
+#feedback button {
+    background-color: #2a80b9;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#feedback button:hover {
+    background-color: #1c638f;
+}

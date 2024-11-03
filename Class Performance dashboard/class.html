@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Performance Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>Class Performance Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="#overview">Class Overview</a></li>
+                <li><a href="#academic-performance">Student-wise Performance</a></li>
+                <li><a href="#feedback">Feedback</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="overview">
+        <h2>Class Overview</h2>
+        <p>Welcome to the Class Performance Dashboard. This tool provides a comprehensive view of student performance, including academic scores, attendance rates, and extracurricular participation. Use this dashboard to track individual student progress, compare class averages, and identify areas for improvement.</p>
+        <ul>
+            <li>Total Students: <span id="total-students"></span></li>
+            <li>Class Average Score: <span id="class-average"></span></li>
+            <li>Top Performing Subject: <span id="top-subject"></span></li>
+        </ul>
+    </div>
+
+    <div id="academic-performance">
+        <h2>Academic Performance</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Subjects</th>
+                    <th>Average Grade</th>  
+                    <th>Attendance</th>
+                    <th>Extracurricular Activities</th>
+                </tr>
+            </thead>
+            <tbody id="student-data">
+            
+            </tbody>
+        </table>
+    </div>
+
+    <div id="class-overview">
+        <h2>Class Overview Charts</h2>
+
+        <div class="chart">
+            <h2>Topper vs Class Average Score Comparison</h2>
+            <canvas id="scoreComparisonChart"></canvas>
+        </div>
+
+        <div class="chart">
+            <h2>Subject-wise Pass Percentage</h2>
+            <canvas id="subjectPassChart"></canvas>
+        </div>
+
+        <div class="chart">
+            <h2>Pass/Fail Percentage</h2>
+            <canvas id="passFailChart"></canvas>
+        </div>
+
+        <div class="chart">
+            <h2>Extracurricular Activities Participation</h2>
+            <canvas id="extracurricularChart"></canvas>
+        </div>
+    </div>
+    <div id="predict" class="predict">
+        <h2>Performance Prediction</h2>
+        <div class="prediction-form">
+            <label for="student-select">Select a student:</label>
+            <select id="student-select">
+
+            </select>
+            <button onclick="predictPerformance()">Predict Performance</button>
+        </div>
+        <div id="prediction-result" class="prediction-result"></div>
+    </div>
+
+    <div id="feedback">
+        <h2>Instant Feedback</h2>
+        <div>
+            <div>
+                <span>Student Name:</span>
+                <select id="feedback-student-select" class="clearinfo">
+
+                </select>
+            </div>
+            
+            <div>
+                <span>Feedback:</span>
+                <textarea class="clearinfo" id="feedback" name="feedback" placeholder="Enter your feedback"></textarea>
+            </div>
+    
+            <div>
+                <button class="give-pop" onclick="submitFeedback()">Submit Feedback</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Class Performance Dashboard</p>
+    </footer>
+    <script src="class.js"></script>
+</body>
+</html>
