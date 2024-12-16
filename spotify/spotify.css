@@ -21,9 +21,6 @@ body {
 
 }
 
-.home{
-}
-
 .home ul li {
     display: flex;
     gap: 15px;
@@ -95,7 +92,7 @@ body {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 70vh;
 }
 
@@ -175,7 +172,7 @@ body {
     border-radius: 10px;
     width: 70vw;
     padding: 12px;
-    height: 40px;
+    min-height: 40px;
 }
 
 .songbuttons{
@@ -189,6 +186,17 @@ body {
     overflow: auto;
     margin-bottom: 44px;
 } 
+
+.hamburger{
+    display: none;
+}
+
+.hamburgercont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+}
 
 .songlist ul{
     padding: 0px 12px;
@@ -226,12 +234,13 @@ body {
 
 .seekbar{
     height: 2px;
-    width: 98%;
+    width: 98.5%;
     background-color:  black;
     border-radius: 10px;
     position: absolute;
     bottom: 0;
     margin: 6px;
+    cursor: pointer;
 }
 
 .circle{
@@ -256,4 +265,38 @@ body {
 .abovebar { 
     display: flex;
     justify-content: space-between;
+}
+
+@media (max-width: 1400px) {
+    .left{
+        position: absolute;
+        left: -120%;
+        transition: all .3s;
+        z-index: 1;
+        width: 370px;
+        background-color: black;
+    }
+    
+    .close{
+        position: absolute;
+        width: 30px;
+        right: 31px;
+        top: 25px;
+    }
+
+    .right{
+        width: 100vw;
+    }
+
+    .playbar{
+        width: 88vw;
+    }
+
+    .seekbar{
+        width: 90%;
+    }
+
+    .hamburger{
+        display: block;
+    }    
 }
