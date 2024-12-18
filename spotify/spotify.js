@@ -1,9 +1,10 @@
 console.log("Java Script")
 let currentsong = new Audio();
+let songs;
 
 function secondsToMinutes(seconds){
     if (isNaN(seconds) || seconds < 0) {
-        return "Invalid Input"
+        return "00:00"
     }
     const minutes = Math.floor(seconds / 60)
     const remainingSeconds = Math.floor(seconds % 60)
@@ -45,7 +46,7 @@ const playMusic= (track, pause = false)=>{
 
 async function main() {
 
-    let songs = await getSongs()
+    songs = await getSongs()
     playMusic(songs[0], true)
 
     let songUL = document.querySelector(".songlist").getElementsByTagName("ul")[0]
@@ -87,7 +88,7 @@ async function main() {
 
     currentsong.addEventListener("timeupdate", () => {
         console.log(currentsong.currentTime, currentsong.duration)
-        document.querySelector(".songtime").innerHTML = `${secondsToMinutes(currentsong.currentTime)}/${secondsToMinutes(currentsong.duration)}`
+        document.querySelector(".songtime").innerHTML = `${secondsToMinutes(currentsong.currentTime)} / ${secondsToMinutes(currentsong.duration)}`
         document.querySelector(".circle").style.left = (currentsong.currentTime/currentsong.duration)*100 + "%"
     })
 
@@ -105,7 +106,24 @@ async function main() {
         document.querySelector(".left").style.left = "-120%"
     })
 
+    previous.addEventListener("click", () =>{
+        currentsong.pause()
+        let index = songs.indexOf(currentsong.src.split("/").slice(-1) [0])
+        if (index - 1 >= 0) {
+            playMusic(songs[index - 1])
+        }
+        
+    })
+    
+    next.addEventListener("click", ()=> {
+        currentsong.pause()
+        let index = songs.indexOf(currentsong.src.split("/").slice(-1) [0])
+        if (index + 1 < songs.length) {
+            playMusic(songs[index+1])
+        }
+    })
 }
+
 main()
 
 
