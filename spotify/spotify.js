@@ -1,6 +1,6 @@
-console.log("Java Script")
 let currentsong = new Audio();
 let songs;
+let currFolder;
 
 function secondsToMinutes(seconds){
     if (isNaN(seconds) || seconds < 0) {
@@ -15,41 +15,23 @@ function secondsToMinutes(seconds){
     return `${formattedMinutes}:${formattedSeconds}`
 }
 
-async function getSongs() {
-    let a = await fetch("/Web-Development/spotify/songs/")
+async function getSongs(folder) {
+    currFolder = folder
+    let a = await fetch(`/Web-Development/spotify/${folder}/`)
     let response = await a.text();
-    console.log(response);
     let div = document.createElement("div")
     div.innerHTML = response;
     let as = div.getElementsByTagName("a")
-    let songs = []
+    songs = []
     for (let index = 0; index < as.length; index++) {
         const element = as[index];
         if (element.href.endsWith(".mp3")) {
-            songs.push(element.href.split("/songs/")[1])
+            songs.push(element.href.split(`/${folder}/`)[1])
         }
     }
-    return songs
-}
-
-const playMusic= (track, pause = false)=>{
-    // let audio = new Audio("/spotify/songs/" + track)
-    currentsong.src = "/Web-Development/spotify/songs/" + track
-    if (!pause) {
-        currentsong.play()
-        play.src = "pause.svg"
-    }
-    document.querySelector(".songinfo").innerHTML = decodeURI(track)
-    document.querySelector(".songtime").innerHTML = "00:00 / 00:00"
     
-}
-
-async function main() {
-
-    songs = await getSongs()
-    playMusic(songs[0], true)
-
     let songUL = document.querySelector(".songlist").getElementsByTagName("ul")[0]
+    songUL.innerHTML = ""
     for (const song of songs) {
         songUL.innerHTML = songUL.innerHTML + `<li data-song="${song.replaceAll("%20", " ")}"> <img class="invert" src="music.svg" alt="">
                             <div class="info">
@@ -62,17 +44,36 @@ async function main() {
                             </div> </li>`;
     }
 
-    Array.from(document.querySelector(".songlist").getElementsByTagName("li")).forEach((e) => {
+    Array.from(document.querySelector(".songlist").getElementsByTagName("li")).forEach(e => {
         e.addEventListener("click", (element) => {
-            console.log(e.querySelector(".info").firstElementChild.innerHTML)
             playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
 
 
             // const songName = e.getAttribute("data-song"); // Get the song from data attribute
-            // console.log(songName);  // Print the exact song name
             // playMusic(songName);    // Play the corresponding song
         });
     });
+    return songs
+}
+
+const playMusic= (track, pause = false)=>{
+    // let audio = new Audio("/spotify/songs/" + track)
+    currentsong.src = `/Web-Development/spotify/${currFolder}/` + track
+    if (!pause) {
+        currentsong.play()
+        play.src = "pause.svg"
+    }
+    document.querySelector(".songinfo").innerHTML = decodeURI(track)
+    document.querySelector(".songtime").innerHTML = "00:00 / 00:00"
+    
+}
+
+async function main() {
+
+    await getSongs("songs/ncs")
+    playMusic(songs[0], true)
+
+    
 
     play.addEventListener("click", () =>{
         if (currentsong.paused) {
@@ -87,7 +88,6 @@ async function main() {
     })
 
     currentsong.addEventListener("timeupdate", () => {
-        console.log(currentsong.currentTime, currentsong.duration)
         document.querySelector(".songtime").innerHTML = `${secondsToMinutes(currentsong.currentTime)} / ${secondsToMinutes(currentsong.duration)}`
         document.querySelector(".circle").style.left = (currentsong.currentTime/currentsong.duration)*100 + "%"
     })
@@ -122,6 +122,16 @@ async function main() {
             playMusic(songs[index+1])
         }
     })
+
+    document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e)=>{
+        currentsong.volume = parseInt(e.target.value)/100
+    })
+
+    Array.from(document.getElementsByClassName("card")).forEach(element => {
+        element.addEventListener("click",async item =>{
+            songs = await getSongs(`songs/${item.currentTarget.dataset.folder}`)
+        })
+    });
 }
 
 main()
