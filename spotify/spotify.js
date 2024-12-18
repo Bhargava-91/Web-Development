@@ -33,7 +33,7 @@ async function getSongs() {
 
 const playMusic= (track, pause = false)=>{
     // let audio = new Audio("/spotify/songs/" + track)
-    currentsong.src = "/Web-Development/spotify/songs/" + track
+    currentsong.src = "https://bhargava-91.github.io/Web-Development/spotify/songs" + track
     if (!pause) {
         currentsong.play()
         play.src = "pause.svg"
