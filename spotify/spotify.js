@@ -153,6 +153,7 @@ async function main() {
             currentsong.volume = 0;
             document.querySelector(".range").getElementsByTagName("input")[0].value = 0;
         }
+        
         else{
             e.target.src = e.target.src.replace("mute.svg", "volume.svg")
             currentsong.volume = .10;
